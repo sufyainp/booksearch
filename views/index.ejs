@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendations</title>
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Book Recommendations</h1>
+        <form action="/search" method="GET">
+            <input type="text" name="query" placeholder="Enter a book title or author" value="<%= query %>">
+            <button type="submit">Search</button>
+        </form>
+        <% if (books && books.length > 0) { %>
+            <% books.forEach(function(book) { %>
+                <div class="book">
+                    <h2><%= book.title %></h2>
+                    <p><strong>Author:</strong> <%= book.authors %></p>
+                    <p><%= book.description %></p>
+                </div>
+            <% }); %>
+        <% } else if (books && books.length === 0) { %>
+            <p>No books found for '<%= query %>'.</p>
+        <% } %>
+    </div>
+</body>
+</html>
